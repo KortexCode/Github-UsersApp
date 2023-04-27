@@ -11,7 +11,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 
 module.exports = {
-    entry: "./src/index.jsx", //punto de entrada del proyecto
+    entry: "./src/index.tsx", //punto de entrada del proyecto
     output: { //punto de salida del proyecto optimizado y terminado
         path: path.resolve(__dirname, "dist"),
         filename:"[name].[contenthash].js", //nombre del archivo optimizado(el index.js)
@@ -19,9 +19,9 @@ module.exports = {
         assetModuleFilename:'assets/images/[hash][ext]',
     },
     mode:"production",
-    devtool:"source-map",
+    devtool:"inline-source-map",
     resolve: {//Con que extensiones va a trabajar webpack
-        extensions:[".js", ".jsx"],
+        extensions:[".js", ".jsx", ".tsx", ".ts"],
         alias: {
             "@": path.resolve(__dirname, "src/"),
             "@components": path.resolve(__dirname, "src/components"),
@@ -41,11 +41,11 @@ module.exports = {
                     loader: "babel-loader"
                 }
             },
-            {
+         /*    {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
-            },
+            }, */
             {
                 test:/\.html$/,
                 use: {

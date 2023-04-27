@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    entry: "./src/index.jsx", //punto de entrada del proyecto
+    entry: "./src/index.tsx", //punto de entrada del proyecto
     output: { //punto de salida del proyecto optimizado y terminado
         path: path.resolve(__dirname, "dist"),
         filename:"[name].[contenthash].js", //nombre del archivo optimizado(el index.js)
@@ -33,11 +33,6 @@ module.exports = {
                 use:{
                     loader: "babel-loader"
                 }
-            },
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
             },
             {
                 test:/\.html$/,

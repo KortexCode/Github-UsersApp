@@ -1,26 +1,26 @@
-const path = require("path"); //nos permite saber donde está ubicado este proyecto
-//Si está en un servidor o computadora local
-//PLUGINS
-//Optimizar archivos al comprimirlos
+const path = require('path'); // nos permite saber donde está ubicado este proyecto
+// Si está en un servidor o computadora local
+// PLUGINS
+// Optimizar archivos al comprimirlos
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-//Minizar JS y Css
+// Minizar JS y Css
 const TeserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 
 
 module.exports = {
-    entry: "./src/index.tsx", //punto de entrada del proyecto
-    output: { //punto de salida del proyecto optimizado y terminado
+    entry: "./src/index.tsx", // punto de entrada del proyecto
+    output: { // punto de salida del proyecto optimizado y terminado
         path: path.resolve(__dirname, "dist"),
-        filename:"[name].[contenthash].js", //nombre del archivo optimizado(el index.js)
-        publicPath:"./",//de manera manual esta es el "src" del js y css dentro del index.html
+        filename:"[name].[contenthash].js", // nombre del archivo optimizado(el index.js)
+        publicPath:"./",// de manera manual esta es el "src" del js y css dentro del index.html
         assetModuleFilename:'assets/images/[hash][ext]',
     },
     mode:"production",
     devtool:"inline-source-map",
-    resolve: {//Con que extensiones va a trabajar webpack
+    resolve: {// Con que extensiones va a trabajar webpack
         extensions:[".js", ".jsx", ".tsx", ".ts"],
         alias: {
             "@": path.resolve(__dirname, "src/"),

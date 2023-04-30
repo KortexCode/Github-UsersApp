@@ -7,17 +7,24 @@ function Searcher():JSX.Element{
     
     return (
         <Stack direction="row" alignItems="center" justifyContent="center" sx={{
-            marginTop: "24px",
+            width: "90%",
+            marginTop: "24px",       
         }}>
-            <TextField id="outlined-basic" label="Github User" variant="outlined" InputProps={{
+            <TextField id="Github User" type='text' label="Github User" variant="filled" InputProps={{
                 endAdornment: (
-                  <IconButton size="small">
-                    <SearchIcon/>
+                  <IconButton size='small'>
+                    <SearchIcon sx={{
+                      fontSize: "35px",
+                      color: "#373d44"
+                    }}/>
                   </IconButton>
-                )
+                ),
+                style:{
+                  color: "white"
+                },
               }} placeholder='Search user' size='small' color='primary' sx={{
+                width: "400px",
                 borderRadius: "8px",
-                color: "white",
               }}/>
         </Stack>
     )

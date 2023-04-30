@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#e3f2fd',
+      main: '#373d44',
     },
   },
 });
@@ -18,7 +18,7 @@ function App(): JSX.Element{
     return (  
       <ThemeProvider theme={theme}>
         <Container sx={{
-            width: "90%",
+            width: "80%",
             height: "80vh",
             borderRadius:"8px",
             display: "flex",

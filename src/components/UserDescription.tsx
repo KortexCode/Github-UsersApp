@@ -9,9 +9,6 @@ type Props = {
 	bio: string | undefined;
 };
 
-type Git = {
-	github: User | null;
-};
 //Componente
 function UserDescription(props: Props): JSX.Element {
 	const { name, login, created_at, bio } = props;
@@ -25,7 +22,10 @@ function UserDescription(props: Props): JSX.Element {
 				<p>{created_at?.toString()}</p>
 			</Stack>
 			<Typography>@{login}</Typography>
-			<Typography>{bio}</Typography>
+			<Typography>
+				{bio ??
+					'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem illum delectus dolor earum in placeat labore, recusandae nulla aspernatur fugiat necessitatibus voluptatem nobis!'}
+			</Typography>
 		</div>
 	);
 }

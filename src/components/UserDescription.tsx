@@ -18,10 +18,10 @@ function UserDescription(props: Props): JSX.Element {
 				direction={{ xs: 'column', sm: 'row' }}
 				justifyContent={{ sm: 'space-between' }} /* alignItems='center' */
 			>
-				<Typography>{name} </Typography>
-				<p>{created_at?.toString()}</p>
+				<Typography gutterBottom={true}>{name}</Typography>
+				<Typography gutterBottom={true}>{created_at?.toString()}</Typography>
 			</Stack>
-			<Typography>@{login}</Typography>
+			<Typography gutterBottom={true}>@{login}</Typography>
 			<Typography>
 				{bio ??
 					'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem illum delectus dolor earum in placeat labore, recusandae nulla aspernatur fugiat necessitatibus voluptatem nobis!'}

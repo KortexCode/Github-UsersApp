@@ -1,5 +1,5 @@
 import { Searcher } from '@/components/Searcher';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { User } from '@/constants/app';
@@ -11,6 +11,15 @@ const theme = createTheme({
 	palette: {
 		primary: {
 			main: '#FFFFFF',
+		},
+	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			sm: 400,
+			md: 600,
+			lg: 900,
+			xl: 1536,
 		},
 	},
 });
@@ -52,6 +61,18 @@ function App(): JSX.Element {
 					background: '#1c1e22',
 				}}
 			>
+				<Typography
+					variant='h3'
+					textAlign='center'
+					gutterBottom={true}
+					sx={{
+						paddingTop: '12px',
+						fontWeight: 700,
+						color: 'rgba(255, 255, 255, 0.7)',
+					}}
+				>
+					GitHub User App
+				</Typography>
 				<Searcher setInputSearch={setInputSearch} />
 				<UserCardsContainer githubUser={githubUser} />
 			</Container>

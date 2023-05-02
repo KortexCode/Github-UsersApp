@@ -14,10 +14,30 @@ type Props = {
 
 function UserContactInfo(props: Props): JSX.Element {
 	const { location, twitter_username, company, blog } = props;
-
+	const blogTag: JSX.Element =
+		blog === '' ? (
+			<Typography
+				sx={{
+					color: 'white',
+				}}
+			>
+				{'Not Available'}
+			</Typography>
+		) : (
+			<a
+				style={{
+					color: 'rgba(255, 255, 255, 0.7)',
+				}}
+				target='_blank'
+				href={blog}
+				rel='noopener noreferrer'
+			>
+				<Typography>{blog}</Typography>
+			</a>
+		);
 	return (
 		<>
-			<Grid item xs={12} sm={6}>
+			<Grid item xs={12} md={6}>
 				<Stack direction='row' columnGap={2}>
 					<LocationOnIcon
 						sx={{
@@ -30,67 +50,48 @@ function UserContactInfo(props: Props): JSX.Element {
 							fontSize: '16px',
 						}}
 					>
-						{location}
+						{location ?? 'Not Available'}
 					</Typography>
 				</Stack>
 			</Grid>
-			<Grid item xs={12} sm={6}>
+			<Grid item xs={12} md={6}>
 				<Stack direction='row' columnGap={2}>
 					<TwitterIcon
 						sx={{
 							color: '#1D9BF0',
 						}}
 					/>
-					{twitter_username !== null ? (
-						<Typography
-							sx={{
-								color: 'white',
-								fontSize: '16px',
-							}}
-						>
-							{twitter_username}
-						</Typography>
-					) : (
-						<Typography>Not Available</Typography>
-					)}
+					<Typography
+						sx={{
+							color: 'white',
+							fontSize: '16px',
+						}}
+					>
+						{twitter_username ?? 'Not Available'}
+					</Typography>
 				</Stack>
 			</Grid>
-			<Grid item xs={12} sm={6}>
+			<Grid item xs={12} md={6}>
 				<Stack direction='row' columnGap={2}>
 					<LanguageIcon sx={{ color: '#0ba52d' }} />
-					{blog !== null ? (
-						<Typography
-							sx={{
-								color: 'white',
-								fontSize: '16px',
-							}}
-						>
-							{blog}
-						</Typography>
-					) : (
-						<Typography>Not Available</Typography>
-					)}
+					{blogTag}
 				</Stack>
 			</Grid>
-			<Grid item xs={12} sm={6}>
+			<Grid item xs={12} md={6}>
 				<Stack direction='row' columnGap={2}>
 					<BusinessIcon
 						sx={{
 							color: '#871689',
 						}}
 					/>
-					{company !== null ? (
-						<Typography
-							sx={{
-								color: 'white',
-								fontSize: '16px',
-							}}
-						>
-							{company}
-						</Typography>
-					) : (
-						<Typography>Not Available</Typography>
-					)}
+					<Typography
+						sx={{
+							color: 'white',
+							fontSize: '16px',
+						}}
+					>
+						{company ?? 'Not Available'}
+					</Typography>
 				</Stack>
 			</Grid>
 		</>

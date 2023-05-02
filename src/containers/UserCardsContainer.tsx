@@ -15,27 +15,27 @@ function UserCardsContainer(props: Props) {
 	return (
 		<Grid
 			container
-			rowSpacing={2}
-			columns={{ xs: 12, md: 12 }}
+			rowGap={3}
+			columns={{ xs: 12, lg: 12 }}
 			sx={{
-				mt: '16px',
+				mt: '28px',
 			}}
 		>
-			<Grid item xs={12} md={4}>
+			<Grid item xs={12} lg={4} alignSelf='center'>
 				<Stack alignItems='center'>
 					<CardMedia
 						component='img'
 						image={`${githubUser?.avatar_url}`}
 						sx={{
-							width: '150px',
-							height: '150px',
+							width: '180px',
+							height: '180px',
 							objectFit: 'cover',
 							borderRadius: '100%',
 						}}
 					/>
 				</Stack>
 			</Grid>
-			<Grid container rowSpacing={3} item xs={12} md={8}>
+			<Grid container rowSpacing={3} item xs={12} lg={8}>
 				<Grid item xs={12}>
 					<UserDescription
 						name={githubUser?.name}

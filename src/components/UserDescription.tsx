@@ -15,8 +15,8 @@ function UserDescription(props: Props): JSX.Element {
 	return (
 		<div>
 			<Stack
-				direction={{ xs: 'column', sm: 'row' }}
-				justifyContent={{ sm: 'space-between' }} /* alignItems='center' */
+				direction={{ xs: 'column', md: 'row' }}
+				justifyContent={{ sm: 'space-between' }}
 			>
 				<Typography
 					sx={{

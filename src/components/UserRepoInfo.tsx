@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Stack, Typography } from '@mui/material';
+import { Paper, Stack, Typography, colors } from '@mui/material';
 
 type Props = {
 	followers: number | undefined;
@@ -21,15 +21,25 @@ function UserRepoInfo(props: Props): JSX.Element {
 				flexWrap='wrap'
 				rowGap={{ xs: 1, sm: 0 }}
 				columnGap={{ xs: 1 }}
-				justifyContent={{ xs: 'space-between', sm: 'space-evenly' }}
+				justifyContent={{
+					xs: 'center',
+					sm: 'space-evenly',
+				}}
 				alignItems='center'
 				sx={{
 					height: 'auto',
 					padding: '12px',
 				}}
 			>
-				<Stack direction='column'>
+				<Stack
+					alignSelf='center'
+					direction='column'
+					sx={{
+						width: '110px',
+					}}
+				>
 					<Typography
+						align='center'
 						sx={{
 							color: '#7a7a7a',
 							fontSize: '18px',
@@ -45,11 +55,17 @@ function UserRepoInfo(props: Props): JSX.Element {
 						}}
 						align='center'
 					>
-						{followers}{' '}
+						{followers}
 					</Typography>
 				</Stack>
-				<Stack direction='column'>
+				<Stack
+					direction='column'
+					sx={{
+						width: '110px',
+					}}
+				>
 					<Typography
+						align='center'
 						sx={{
 							color: '#7a7a7a',
 							fontSize: '18px',
@@ -65,11 +81,17 @@ function UserRepoInfo(props: Props): JSX.Element {
 						}}
 						align='center'
 					>
-						{following}{' '}
+						{following}
 					</Typography>
 				</Stack>
-				<Stack direction='column'>
+				<Stack
+					direction='column'
+					sx={{
+						width: '110px',
+					}}
+				>
 					<Typography
+						align='center'
 						sx={{
 							color: '#7a7a7a',
 							fontSize: '18px',

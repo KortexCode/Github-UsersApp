@@ -14,11 +14,11 @@ body {
 
 #root {
     width: 100%;
-    height: 100vh;
+    height: auto;
+    padding-bottom: 24px;
     background-color: #24292F;
     padding-top: 30px;
-    /* display: flex;
-    align-items: center; */
+  
 }
 .search-icon--animation {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;

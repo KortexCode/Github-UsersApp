@@ -1,3 +1,4 @@
+import { UserContactInfo } from '@/components/UserContactInfo';
 import { UserDescription } from '@/components/UserDescription';
 import { UserRepoInfo } from '@/components/UserRepoInfo';
 import { User } from '@/constants/app';
@@ -17,7 +18,6 @@ function UserCardsContainer(props: Props) {
 			rowSpacing={2}
 			columns={{ xs: 12, md: 12 }}
 			sx={{
-				background: 'white',
 				mt: '16px',
 			}}
 		>
@@ -35,7 +35,7 @@ function UserCardsContainer(props: Props) {
 					/>
 				</Stack>
 			</Grid>
-			<Grid container item xs={12} md={8}>
+			<Grid container rowSpacing={3} item xs={12} md={8}>
 				<Grid item xs={12}>
 					<UserDescription
 						name={githubUser?.name}
@@ -46,10 +46,17 @@ function UserCardsContainer(props: Props) {
 				</Grid>
 				<Grid item xs={12}>
 					<UserRepoInfo
-					/* name={githubUser?.name}
-						created_at={githubUser?.created_at}
-						login={githubUser?.login}
-						bio={githubUser?.bio} */
+						followers={githubUser?.followers}
+						following={githubUser?.following}
+						public_repos={githubUser?.public_repos}
+					/>
+				</Grid>
+				<Grid container rowSpacing={2} item xs={12}>
+					<UserContactInfo
+						location={githubUser?.location}
+						twitter_username={githubUser?.twitter_username}
+						company={githubUser?.company}
+						blog={githubUser?.blog}
 					/>
 				</Grid>
 			</Grid>

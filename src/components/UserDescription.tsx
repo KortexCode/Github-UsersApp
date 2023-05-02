@@ -18,13 +18,38 @@ function UserDescription(props: Props): JSX.Element {
 				direction={{ xs: 'column', sm: 'row' }}
 				justifyContent={{ sm: 'space-between' }} /* alignItems='center' */
 			>
-				<Typography gutterBottom={true}>{name}</Typography>
-				<Typography gutterBottom={true}>{created_at?.toString()}</Typography>
+				<Typography
+					sx={{
+						color: '#7a7a7a',
+						fontSize: '18px',
+						fontWeight: '700',
+					}}
+					gutterBottom={true}
+				>
+					{name}
+				</Typography>
+				<Typography
+					sx={{
+						color: '#7a7a7a',
+						fontSize: '18px',
+					}}
+					gutterBottom={true}
+				>
+					{created_at?.toString()}
+				</Typography>
 			</Stack>
-			<Typography gutterBottom={true}>@{login}</Typography>
-			<Typography>
+			<Typography
+				sx={{
+					color: '#7a7a7a',
+					fontSize: '16px',
+				}}
+				gutterBottom={true}
+			>
+				@{login}
+			</Typography>
+			<Typography sx={{ color: 'white' }}>
 				{bio ??
-					'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem illum delectus dolor earum in placeat labore, recusandae nulla aspernatur fugiat necessitatibus voluptatem nobis!'}
+					'Lorem ipsum, dolor. Autem illum delectus dolor earum in placeat labore, fugiat necessitatibus voluptatem nobis!'}
 			</Typography>
 		</div>
 	);

@@ -16,9 +16,10 @@ const theme = createTheme({
 });
 
 function App(): JSX.Element {
+	//Estados del componente
 	const [githubUser, setGithubUser] = useState<User | null>(null);
 	const [inputSearch, setInputSearch] = useState<SearchText>('octocat');
-
+	//Se realiza la consulta a la Api y se actualizan los estos
 	useEffect(() => {
 		async function githubUserQuery(user: string): Promise<void> {
 			const response = await fetch(`https://api.github.com/users/${user}`, {
@@ -42,7 +43,8 @@ function App(): JSX.Element {
 			<Container
 				sx={{
 					width: '80%',
-					height: '90vh',
+					height: 'auto',
+					paddingBottom: '24px',
 					borderRadius: '8px',
 					display: 'flex',
 					flexDirection: 'column',

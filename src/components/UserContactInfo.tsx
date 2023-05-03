@@ -3,17 +3,18 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LanguageIcon from '@mui/icons-material/Language';
 import BusinessIcon from '@mui/icons-material/Business';
-import { Grid, Stack, Typography, colors } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
 
 type Props = {
-	location: string | undefined;
-	twitter_username: string | undefined;
-	company: string | undefined;
-	blog: string | undefined;
+	location: string;
+	twitter_username: string;
+	company: string;
+	blog: string;
 };
 
 function UserContactInfo(props: Props): JSX.Element {
 	const { location, twitter_username, company, blog } = props;
+	//Elemento blog dependiendo de si vinene vacío.
 	const blogTag: JSX.Element =
 		blog === '' ? (
 			<Typography

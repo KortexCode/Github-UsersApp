@@ -3,15 +3,17 @@ import { Stack, Typography } from '@mui/material';
 import React from 'react';
 
 type Props = {
-	name: string | undefined;
-	login: string | undefined;
-	created_at: Date | undefined;
-	bio: string | undefined;
+	name: string;
+	login: string;
+	created_at: Date;
+	bio: string;
 };
 
 //Componente
 function UserDescription(props: Props): JSX.Element {
 	const { name, login, created_at, bio } = props;
+	const formatDate: string = new Date(created_at).toDateString();
+
 	return (
 		<div>
 			<Stack
@@ -35,7 +37,7 @@ function UserDescription(props: Props): JSX.Element {
 					}}
 					gutterBottom={true}
 				>
-					{created_at?.toString()}
+					{formatDate}
 				</Typography>
 			</Stack>
 			<Typography

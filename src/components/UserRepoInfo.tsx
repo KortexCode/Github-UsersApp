@@ -1,10 +1,10 @@
 import React from 'react';
-import { Paper, Stack, Typography, colors } from '@mui/material';
+import { Paper, Stack, Typography } from '@mui/material';
 
 type Props = {
-	followers: number | undefined;
-	following: number | undefined;
-	public_repos: number | undefined;
+	followers: number;
+	following: number;
+	public_repos: number;
 };
 
 function UserRepoInfo(props: Props): JSX.Element {

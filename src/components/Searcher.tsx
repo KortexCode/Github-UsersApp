@@ -7,8 +7,11 @@ import type { ChangeEventHandler } from 'react';
 //Tipos
 type InputText = string;
 type Props = {
+	searchError: boolean;
 	setInputSearch: (arg: string) => void;
+	setSearchError: (arg: boolean) => void;
 };
+
 //Estilos personalizados del componente textfield
 const SercherTextField = styled(TextField)({
 	'& label.Mui-focused': {
@@ -18,7 +21,6 @@ const SercherTextField = styled(TextField)({
 		color: 'rgba(255, 255, 255, 0.7)',
 	},
 	'& .MuiFilledInput-root': {
-		borderBottom: '1px solid rgba(255, 255, 255, 0.7)',
 		'& fieldset': {
 			borderColor: 'rgba(255, 255, 255, 0.7)',
 		},
@@ -30,7 +32,7 @@ const SercherTextField = styled(TextField)({
 
 //Componente de React
 function Searcher(props: Props): JSX.Element {
-	const { setInputSearch } = props;
+	const { searchError, setInputSearch, setSearchError } = props;
 	const [textValue, setTextValue] = useState<InputText>('');
 
 	//Manejador de cambios en el input
@@ -38,9 +40,13 @@ function Searcher(props: Props): JSX.Element {
 		HTMLInputElement | HTMLTextAreaElement
 	> = (event): void => {
 		setTextValue(event.target.value);
+		//Cambia estado de error de la búsqueda
+		if (searchError) {
+			setSearchError(false);
+		}
 	};
 	//Manejador de consulta
-	const handleSendSearch = () => {
+	const handleSendSearch = (): void => {
 		//Enviar busqueda
 		setInputSearch(textValue);
 		//Animación de botón
@@ -61,39 +67,78 @@ function Searcher(props: Props): JSX.Element {
 				marginTop: '24px',
 			}}
 		>
-			<SercherTextField
-				id='Github User'
-				type='text'
-				label='Github User'
-				variant='filled'
-				InputProps={{
-					endAdornment: (
-						<IconButton
-							id='search-icon'
-							size='small'
-							onClick={handleSendSearch}
-						>
-							<SearchIcon
-								sx={{
-									fontSize: '35px',
-									color: 'rgba(255, 255, 255, 0.7)',
-								}}
-							/>
-						</IconButton>
-					),
-					style: {
-						color: 'rgba(255, 255, 255, 0.7)',
-					},
-				}}
-				placeholder='Search user'
-				size='small'
-				color='primary'
-				sx={{
-					width: '400px',
-					borderRadius: '8px',
-				}}
-				onChange={onSearchChange}
-			/>
+			{searchError ? (
+				<SercherTextField
+					error
+					id='Github User'
+					type='text'
+					label='Github User'
+					variant='filled'
+					placeholder='Search user'
+					size='small'
+					color='primary'
+					helperText='Not results'
+					InputProps={{
+						endAdornment: (
+							<IconButton
+								id='search-icon'
+								size='small'
+								onClick={handleSendSearch}
+							>
+								<SearchIcon
+									sx={{
+										fontSize: '35px',
+										color: 'red',
+									}}
+								/>
+							</IconButton>
+						),
+						style: {
+							color: 'red',
+						},
+					}}
+					sx={{
+						width: '400px',
+						borderRadius: '8px',
+					}}
+					onChange={onSearchChange}
+				/>
+			) : (
+				<SercherTextField
+					id='Github User'
+					type='text'
+					label='Github User'
+					variant='filled'
+					placeholder='Search user'
+					size='small'
+					color='primary'
+					InputProps={{
+						endAdornment: (
+							<IconButton
+								id='search-icon'
+								size='small'
+								onClick={handleSendSearch}
+							>
+								<SearchIcon
+									sx={{
+										fontSize: '35px',
+										color: 'rgba(255, 255, 255, 0.7)',
+									}}
+								/>
+							</IconButton>
+						),
+						style: {
+							color: 'rgba(255, 255, 255, 0.7)',
+						},
+					}}
+					sx={{
+						width: '400px',
+						borderRadius: '8px',
+						boxShadow: '0px 0px 3px rgba(255, 255, 255, 0.7)',
+					}}
+					onChange={onSearchChange}
+				/>
+			)}
 		</Stack>
 	);
 }

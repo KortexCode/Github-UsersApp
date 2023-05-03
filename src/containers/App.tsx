@@ -6,7 +6,43 @@ import { User } from '@/constants/app';
 import { UserCardsContainer } from './UserCardsContainer';
 
 type SearchText = string;
-
+type Error = boolean;
+//Usuario inicial
+const UserInitial = {
+	login: '',
+	id: 0,
+	node_id: '',
+	avatar_url: '',
+	gravatar_id: '',
+	url: '',
+	html_url: '',
+	followers_url: '',
+	following_url: '',
+	gists_url: '',
+	starred_url: '',
+	subscriptions_url: '',
+	organizations_url: '',
+	repos_url: '',
+	events_url: '',
+	received_events_url: '',
+	type: '',
+	site_admin: false,
+	name: '',
+	company: '',
+	blog: '',
+	location: '',
+	email: '',
+	hireable: '',
+	bio: '',
+	twitter_username: '',
+	public_repos: 0,
+	public_gists: 0,
+	followers: 0,
+	following: 0,
+	created_at: new Date(),
+	updated_at: new Date(),
+};
+//Tema personalizado
 const theme = createTheme({
 	palette: {
 		primary: {
@@ -26,8 +62,9 @@ const theme = createTheme({
 
 function App(): JSX.Element {
 	//Estados del componente
-	const [githubUser, setGithubUser] = useState<User | null>(null);
+	const [githubUser, setGithubUser] = useState<User>(UserInitial);
 	const [inputSearch, setInputSearch] = useState<SearchText>('octocat');
+	const [searhError, setSearchError] = useState<Error>(false);
 	//Se realiza la consulta a la Api y se actualizan los estos
 	useEffect(() => {
 		async function githubUserQuery(user: string): Promise<void> {
@@ -36,6 +73,7 @@ function App(): JSX.Element {
 			});
 			if (response.status === 404) {
 				setInputSearch('octocat');
+				setSearchError(true);
 				return;
 			} else {
 				const data: User = await response.json();
@@ -44,8 +82,6 @@ function App(): JSX.Element {
 		}
 		githubUserQuery(inputSearch);
 	}, [inputSearch]);
-
-	console.log('datos ex', githubUser);
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -73,7 +109,11 @@ function App(): JSX.Element {
 				>
 					GitHub User App
 				</Typography>
-				<Searcher setInputSearch={setInputSearch} />
+				<Searcher
+					setInputSearch={setInputSearch}
+					searchError={searhError}
+					setSearchError={setSearchError}
+				/>
 				<UserCardsContainer githubUser={githubUser} />
 			</Container>
 		</ThemeProvider>

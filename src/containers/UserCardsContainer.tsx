@@ -6,7 +6,7 @@ import { CardMedia, Grid, Stack } from '@mui/material';
 import React from 'react';
 
 type Props = {
-	githubUser: User | null;
+	githubUser: User;
 };
 
 function UserCardsContainer(props: Props) {
@@ -38,25 +38,25 @@ function UserCardsContainer(props: Props) {
 			<Grid container rowSpacing={3} item xs={12} lg={8}>
 				<Grid item xs={12}>
 					<UserDescription
-						name={githubUser?.name}
-						created_at={githubUser?.created_at}
-						login={githubUser?.login}
-						bio={githubUser?.bio}
+						name={githubUser.name}
+						created_at={githubUser.created_at}
+						login={githubUser.login}
+						bio={githubUser.bio}
 					/>
 				</Grid>
 				<Grid item xs={12}>
 					<UserRepoInfo
-						followers={githubUser?.followers}
-						following={githubUser?.following}
-						public_repos={githubUser?.public_repos}
+						followers={githubUser.followers}
+						following={githubUser.following}
+						public_repos={githubUser.public_repos}
 					/>
 				</Grid>
 				<Grid container rowSpacing={2} item xs={12}>
 					<UserContactInfo
-						location={githubUser?.location}
-						twitter_username={githubUser?.twitter_username}
-						company={githubUser?.company}
-						blog={githubUser?.blog}
+						location={githubUser.location}
+						twitter_username={githubUser.twitter_username}
+						company={githubUser.company}
+						blog={githubUser.blog}
 					/>
 				</Grid>
 			</Grid>
